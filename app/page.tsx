@@ -1,5 +1,18 @@
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
-import { ArrowRight, Box, CornerUpRight, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Box,
+  Building2,
+  CornerUpRight,
+  Eye,
+  GitBranch,
+  Layers3,
+  Lock,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import type { ReactNode } from "react";
 
 import { SiteHeader } from "@/components/site-header";
@@ -8,6 +21,21 @@ import { Button } from "@/components/ui/button";
 import { VercelHeaderMark } from "@/components/vercel-logo";
 
 const SAMPLE_HREF = "/sample";
+
+function readSvg(filePath: string) {
+  try {
+    return fs.readFileSync(filePath, "utf8");
+  } catch {
+    return "";
+  }
+}
+
+const DEPLOY_ONCE_GLOBE_LIGHT = readSvg(
+  path.join(process.cwd(), "public", "vercel", "deploy-once-globe-light.svg")
+);
+const DEPLOY_ONCE_GLOBE_DARK = readSvg(
+  path.join(process.cwd(), "public", "vercel", "deploy-once-globe-dark.svg")
+);
 
 function ArrowCircleLink({ className }: { className?: string }) {
   return (
@@ -213,9 +241,484 @@ function FrameworkFlow() {
   );
 }
 
+function ScaleEnterpriseRow() {
+  return (
+    <div className="relative py-12 md:py-14">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-40 dark:hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)",
+          backgroundSize: "360px 360px",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 hidden opacity-25 dark:block"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
+          backgroundSize: "360px 360px",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-[359px] hidden w-px bg-[#ebebeb] dark:bg-[#1f1f1f] md:block"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-[719px] hidden w-px bg-[#ebebeb] dark:bg-[#1f1f1f] md:block"
+      />
+
+      <div className="relative mx-auto flex max-w-[760px] flex-wrap items-center justify-center gap-x-3 gap-y-3 text-center text-[24px] font-medium leading-8 tracking-[-0.96px] text-[#171717] dark:text-[#ededed]">
+        <span>Scale your</span>
+        <Link
+          href={SAMPLE_HREF}
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-4 text-[14px] font-medium leading-5 text-[#171717] shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-50 dark:bg-[#0a0a0a] dark:text-[#ededed] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.145),0_1px_2px_rgba(0,0,0,0.16)] dark:hover:bg-[#111]"
+        >
+          <Building2 className="h-4 w-4 text-[#666666] dark:text-white/60" />
+          Enterprise
+        </Link>
+        <span className="text-[#666666] dark:text-white/60">
+          without compromising
+        </span>
+        <Link
+          href={SAMPLE_HREF}
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-4 text-[14px] font-medium leading-5 text-[#171717] shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] hover:bg-neutral-50 dark:bg-[#0a0a0a] dark:text-[#ededed] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.145),0_1px_2px_rgba(0,0,0,0.16)] dark:hover:bg-[#111]"
+        >
+          <ShieldCheck className="h-4 w-4 text-[#666666] dark:text-white/60" />
+          Security
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function DeployOnceSection() {
+  return (
+    <div className="relative bg-white dark:bg-black">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-40 dark:hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)",
+          backgroundSize: "360px 360px",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 hidden opacity-25 dark:block"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
+          backgroundSize: "360px 360px",
+        }}
+      />
+
+      <div className="relative px-6 pb-0 pt-20 lg:px-11">
+        <p className="mx-auto max-w-[760px] text-balance text-center text-[24px] font-medium leading-8 tracking-[-0.96px] text-[#666666] dark:text-white/60">
+          <span className="font-semibold text-[#171717] dark:text-[#ededed]">
+            Deploy once, deliver everywhere.
+          </span>{" "}
+          When you push code to Vercel, we make it instantly available across
+          the globe.
+        </p>
+
+        <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+          <Link
+            href={SAMPLE_HREF}
+            className="inline-flex h-12 items-center justify-center rounded-full bg-[#171717] px-6 text-[14px] font-medium leading-5 text-white shadow-[0_1px_2px_rgba(0,0,0,0.08)] hover:bg-black dark:bg-[#ededed] dark:text-[#0a0a0a] dark:hover:bg-white/90"
+          >
+            More about Infrastructure
+          </Link>
+          <Link
+            href={SAMPLE_HREF}
+            className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[14px] font-medium leading-5 text-[#171717] shadow-[0_0_0_1px_rgba(0,0,0,0.08)] hover:bg-neutral-50 dark:bg-[#0a0a0a] dark:text-[#ededed] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.14)] dark:hover:bg-[#111]"
+          >
+            Learn about Enterprise
+          </Link>
+        </div>
+      </div>
+
+      <div className="relative mt-16 h-[520px] overflow-hidden border-t border-[#ebebeb] dark:border-[#1f1f1f]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-40 dark:hidden"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)",
+            backgroundSize: "360px 360px",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 hidden opacity-25 dark:block"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
+            backgroundSize: "360px 360px",
+          }}
+        />
+
+        <div
+          className={[
+            "pointer-events-none absolute left-1/2 top-6 -translate-x-1/2",
+            "h-[492px] w-[982px]",
+            "[--guide-color:#ebebeb] dark:[--guide-color:#1f1f1f]",
+          ].join(" ")}
+        >
+          <RawSvg
+            svg={DEPLOY_ONCE_GLOBE_LIGHT}
+            className="h-full w-full dark:hidden"
+          />
+          <RawSvg
+            svg={DEPLOY_ONCE_GLOBE_DARK}
+            className="hidden h-full w-full dark:block"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FluidAndGatewaySection() {
+  return (
+    <div className="grid bg-white dark:bg-black md:grid-cols-2">
+      <div className="border-b border-[#ebebeb] dark:border-[#1f1f1f] md:border-r md:border-[#ebebeb] md:dark:border-[#1f1f1f]">
+        <div className="p-6 lg:p-11">
+          <div className="flex items-center gap-2 text-[14px] font-medium leading-5 tracking-[-0.28px] text-[#666666] dark:text-white/60">
+            <Sparkles className="h-4 w-4" />
+            Fluid Compute
+          </div>
+          <h3 className="mt-6 text-balance text-[40px] font-semibold leading-[44px] tracking-[-1.6px] text-[#171717] dark:text-white">
+            A compute model for all workloads. With Active CPU pricing.
+          </h3>
+          <div className="mt-8">
+            <Link
+              href={SAMPLE_HREF}
+              className="inline-flex h-10 items-center justify-center rounded-full bg-white px-4 text-[14px] font-medium leading-5 text-[#171717] shadow-[0_0_0_1px_rgba(0,0,0,0.08)] hover:bg-neutral-50 dark:bg-[#0a0a0a] dark:text-[#ededed] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.14)] dark:hover:bg-[#111]"
+            >
+              Learn more
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-b border-[#ebebeb] bg-white dark:border-[#1f1f1f] dark:bg-black">
+        <div className="p-6 lg:p-11">
+          <div className="mx-auto max-w-[560px] rounded-2xl border border-[#ebebeb] bg-white p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] dark:border-[#1f1f1f] dark:bg-black dark:shadow-[0_1px_2px_rgba(0,0,0,0.24)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/vercel/fluid-compute-min-home.svg"
+              alt=""
+              className="w-full dark:hidden"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/vercel/fluid-compute-home-min-dark.svg"
+              alt=""
+              className="hidden w-full dark:block"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="border-b border-[#ebebeb] dark:border-[#1f1f1f] md:border-b-0 md:border-r md:border-[#ebebeb] md:dark:border-[#1f1f1f]">
+        <div className="p-6 lg:p-11">
+          <div className="flex items-center gap-2 text-[14px] font-medium leading-5 tracking-[-0.28px] text-[#666666] dark:text-white/60">
+            <Sparkles className="h-4 w-4" />
+            AI Gateway
+          </div>
+          <p className="mt-6 text-balance text-[24px] font-medium leading-8 tracking-[-0.96px] text-[#666666] dark:text-white/60">
+            <span className="font-semibold text-[#171717] dark:text-[#ededed]">
+              The AI Gateway For Developers.
+            </span>{" "}
+            Effortlessly access and deploy hundreds of AI models from one
+            interface.
+          </p>
+
+          <div className="mt-8 rounded-2xl border border-[#ebebeb] bg-white dark:border-[#1f1f1f] dark:bg-black">
+            <div className="flex items-center gap-5 border-b border-[#ebebeb] px-5 py-3 text-[12px] font-medium leading-4 text-[#666666] dark:border-[#1f1f1f] dark:text-white/60">
+              <span className="relative text-[#171717] dark:text-[#ededed]">
+                AI SDK
+                <span className="absolute -bottom-3 left-0 h-px w-full bg-[#171717] dark:bg-[#ededed]" />
+              </span>
+              <span>Python</span>
+              <span>OpenAI HTTP</span>
+              <span className="ml-auto text-[#a1a1a1]">⧉</span>
+            </div>
+
+            <pre className="overflow-hidden px-5 py-4 text-[12px] leading-6 text-[#171717] dark:text-[#ededed]">
+              <code className="font-mono">
+                <span className="text-[#a1a1a1]">1</span>{" "}
+                <span className="text-[#d14]">import</span>{" "}
+                <span className="text-[#171717] dark:text-[#ededed]">
+                  {"{ streamText }"}
+                </span>{" "}
+                <span className="text-[#d14]">from</span>{" "}
+                <span className="text-[#0b5cff]">&apos;ai&apos;</span>
+                {"\n"}
+                <span className="text-[#a1a1a1]">2</span>
+                {"\n"}
+                <span className="text-[#a1a1a1]">3</span>{" "}
+                <span className="text-[#d14]">const</span>{" "}
+                <span className="text-[#0b5cff]">result</span>{" "}
+                <span className="text-[#d14]">=</span>{" "}
+                <span className="text-[#0b5cff]">streamText</span>
+                {"({\n"}
+                <span className="text-[#a1a1a1]">4</span>{" "}
+                <span className="text-[#666666] dark:text-white/60">
+                  {"  "}
+                </span>
+                <span className="text-[#0b5cff]">model</span>
+                <span className="text-[#d14]">:</span>{" "}
+                <span className="text-[#0b5cff]">&apos;openai/gpt-5.2&apos;</span>
+                ,{"\n"}
+                <span className="text-[#a1a1a1]">5</span>{" "}
+                <span className="text-[#666666] dark:text-white/60">
+                  {"  "}
+                </span>
+                <span className="text-[#0b5cff]">prompt</span>
+                <span className="text-[#d14]">:</span>{" "}
+                <span className="text-[#0c7a43]">
+                  &apos;Why is the sky blue?&apos;
+                </span>
+                {"\n"}
+                <span className="text-[#a1a1a1]">6</span>
+                {"});\n"}
+              </code>
+            </pre>
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-[12px] leading-4 text-[#666666] dark:text-white/60">
+            <span>Use it with</span>
+            <span className="inline-flex h-6 items-center rounded-md bg-[#e6f0ff] px-2 font-medium text-[#0b5cff] dark:bg-white/10 dark:text-white">
+              OpenAI
+            </span>
+            <span className="inline-flex h-6 items-center rounded-md bg-[#f2f2f2] px-2 font-medium text-[#171717] dark:bg-white/10 dark:text-white">
+              xAI
+            </span>
+            <span className="inline-flex h-6 items-center rounded-md bg-[#f2f2f2] px-2 font-medium text-[#171717] dark:bg-white/10 dark:text-white">
+              Anthropic
+            </span>
+            <span className="text-[#a1a1a1]">and many more</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white dark:bg-black">
+        <div className="p-6 lg:p-11">
+          <div className="text-[12px] font-medium leading-4 text-[#666666] dark:text-white/60">
+            Top models on Feb 22, 2026
+          </div>
+          <div className="mt-6 grid gap-3">
+            {[
+              { n: 1, name: "Claude Opus 4…", pct: "26.3%", c: "#7c3aed" },
+              { n: 2, name: "Gemini 3 Flash", pct: "11.3%", c: "#0f766e" },
+              { n: 3, name: "KAT-Coder-Pro…", pct: "8.0%", c: "#16a34a" },
+              { n: 4, name: "Claude Sonnet…", pct: "7.6%", c: "#ef4444" },
+              { n: 5, name: "Gemini 2.5 Fla…", pct: "4.7%", c: "#38bdf8" },
+              { n: 6, name: "Kimi K2.5", pct: "4.2%", c: "#a855f7" },
+              { n: 7, name: "GPT 5.2", pct: "4.1%", c: "#22c55e" },
+              { n: 8, name: "Claude Haiku 4…", pct: "4.0%", c: "#f59e0b" },
+              { n: 9, name: "GLM 5", pct: "3.4%", c: "#ec4899" },
+              { n: 10, name: "Claude Sonnet…", pct: "2.9%", c: "#2563eb" },
+            ].map((row) => (
+              <div
+                key={row.n}
+                className="flex items-center justify-between text-[14px] leading-5 text-[#171717] dark:text-[#ededed]"
+              >
+                <div className="flex min-w-0 items-center gap-3">
+                  <div className="w-6 text-right tabular-nums text-[#666666] dark:text-white/60">
+                    {row.n}
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    className="h-2.5 w-2.5 rounded-full"
+                    style={{ backgroundColor: row.c }}
+                  />
+                  <div className="min-w-0 truncate">{row.name}</div>
+                </div>
+                <div className="tabular-nums text-[#666666] dark:text-white/60">
+                  {row.pct}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TemplateCard({
+  title,
+  tint,
+  icon,
+}: {
+  title: string;
+  tint: string;
+  icon: ReactNode;
+}) {
+  return (
+    <Link
+      href={SAMPLE_HREF}
+      className="group relative overflow-hidden rounded-2xl border border-[#ebebeb] bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] hover:bg-[#fafafa] dark:border-[#1f1f1f] dark:bg-black dark:shadow-[0_1px_2px_rgba(0,0,0,0.24)] dark:hover:bg-[#0a0a0a]"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-40 dark:hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 hidden opacity-25 dark:block"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute right-0 top-0 h-16 w-16 origin-top-right rotate-45"
+        style={{ backgroundColor: tint, opacity: 0.14 }}
+      />
+      <div className="relative flex h-[132px] items-center justify-center">
+        <div
+          className="grid h-12 w-12 place-items-center rounded-full bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.06)] dark:bg-[#0a0a0a] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.12)]"
+          style={{ color: tint }}
+        >
+          {icon}
+        </div>
+      </div>
+      <div className="relative border-t border-[#ebebeb] px-5 py-4 text-[14px] font-medium leading-5 text-[#171717] dark:border-[#1f1f1f] dark:text-[#ededed]">
+        {title}
+      </div>
+    </Link>
+  );
+}
+
+function DeployFirstAppSection() {
+  return (
+    <div className="grid bg-white dark:bg-black md:grid-cols-[359px_720px]">
+      <div className="border-b border-[#ebebeb] dark:border-[#1f1f1f] md:border-b-0 md:border-r md:border-[#ebebeb] md:dark:border-[#1f1f1f]">
+        <div className="p-6 lg:p-11">
+          <h3 className="text-balance text-[40px] font-semibold leading-[44px] tracking-[-1.6px] text-[#171717] dark:text-white">
+            Deploy your
+            <br />
+            first app in
+            <br />
+            seconds.
+          </h3>
+
+          <div className="mt-8 grid gap-4 text-[16px] leading-6 text-[#666666] dark:text-white/60">
+            <div className="flex items-start gap-3">
+              <GitBranch className="mt-0.5 h-5 w-5 text-[#a1a1a1]" />
+              <span>Deploy automatically from git or with our CLI</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <Layers3 className="mt-0.5 h-5 w-5 text-[#a1a1a1]" />
+              <span>Wide range support for the most popular frameworks</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <Eye className="mt-0.5 h-5 w-5 text-[#a1a1a1]" />
+              <span>Previews for every push</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <Lock className="mt-0.5 h-5 w-5 text-[#a1a1a1]" />
+              <span>Automatic HTTPS for all your domains</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative p-6 lg:p-11">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <TemplateCard
+            title="Next.js Templates"
+            tint="#111111"
+            icon={<VercelHeaderMark className="h-5 w-5" />}
+          />
+          <TemplateCard
+            title="Svelte Templates"
+            tint="#ff3e00"
+            icon={<span className="text-[18px] font-bold">S</span>}
+          />
+          <TemplateCard
+            title="React Templates"
+            tint="#38bdf8"
+            icon={<span className="text-[18px] font-bold">⚛</span>}
+          />
+          <TemplateCard
+            title="Nuxt Templates"
+            tint="#22c55e"
+            icon={<span className="text-[18px] font-bold">N</span>}
+          />
+          <TemplateCard
+            title="Astro Templates"
+            tint="#a855f7"
+            icon={<span className="text-[18px] font-bold">A</span>}
+          />
+          <TemplateCard
+            title="Python Templates"
+            tint="#f59e0b"
+            icon={<span className="text-[18px] font-bold">Py</span>}
+          />
+        </div>
+
+        <Link
+          href={SAMPLE_HREF}
+          className="mt-10 inline-flex h-12 w-full items-center justify-between rounded-full bg-[#171717] px-5 text-[14px] font-medium leading-5 text-white shadow-[0_1px_2px_rgba(0,0,0,0.08)] hover:bg-black sm:w-[320px] dark:bg-[#ededed] dark:text-[#0a0a0a] dark:hover:bg-white/90"
+        >
+          Talk to an Expert
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-white/10">
+            <ArrowRight className="h-4 w-4" />
+          </span>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function StartDeployingSection() {
+  return (
+    <div className="bg-white px-6 py-20 dark:bg-black lg:px-11">
+      <div className="mx-auto max-w-[760px] text-center">
+        <h3 className="text-balance text-[40px] font-semibold leading-[44px] tracking-[-1.6px] text-[#171717] dark:text-white">
+          Start Deploying
+        </h3>
+        <p className="mt-4 text-balance text-[16px] leading-6 text-[#666666] dark:text-white/60">
+          Build faster, ship with confidence, and scale globally on the AI Cloud.
+        </p>
+        <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+          <Link
+            href={SAMPLE_HREF}
+            className="inline-flex h-12 items-center justify-center rounded-full bg-[#171717] px-6 text-[14px] font-medium leading-5 text-white shadow-[0_1px_2px_rgba(0,0,0,0.08)] hover:bg-black dark:bg-[#ededed] dark:text-[#0a0a0a] dark:hover:bg-white/90"
+          >
+            Start Deploying
+          </Link>
+          <Link
+            href={SAMPLE_HREF}
+            className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[14px] font-medium leading-5 text-[#171717] shadow-[0_0_0_1px_rgba(0,0,0,0.08)] hover:bg-neutral-50 dark:bg-[#0a0a0a] dark:text-[#ededed] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.14)] dark:hover:bg-[#111]"
+          >
+            Get a Demo
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[var(--geist-background)] text-[var(--geist-foreground)]">
+    <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
       <main className="px-4">
@@ -576,6 +1079,26 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="border-t border-[#ebebeb] bg-white dark:border-[#1f1f1f] dark:bg-black">
+              <ScaleEnterpriseRow />
+            </div>
+
+            <div className="border-t border-[#ebebeb] dark:border-[#1f1f1f]">
+              <DeployOnceSection />
+            </div>
+
+            <div className="border-t border-[#ebebeb] dark:border-[#1f1f1f]">
+              <FluidAndGatewaySection />
+            </div>
+
+            <div className="border-t border-[#ebebeb] dark:border-[#1f1f1f]">
+              <DeployFirstAppSection />
+            </div>
+
+            <div className="border-t border-[#ebebeb] dark:border-[#1f1f1f]">
+              <StartDeployingSection />
             </div>
           </div>
         </section>

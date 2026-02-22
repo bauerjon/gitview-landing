@@ -88,6 +88,9 @@
   /* Minimal Vercel DS vars used by injected SVGs. */
   --ds-gray-100: #fafafa;
   --ds-gray-1000: #171717;
+  --ds-gray-900: #171717;
+  --ds-background-100: #ffffff;
+  --ds-background-200: #fafafa;
 }
 
 .dark {
@@ -128,6 +131,14 @@
 
   --ds-gray-100: #0a0a0a;
   --ds-gray-1000: #ededed;
+  --ds-gray-900: #ededed;
+  --ds-background-100: #0a0a0a;
+  --ds-background-200: #000000;
+}
+
+/* Vercel globe SVG gradients expect a `--color` var set. */
+:where(.path-module__fNfkpG__gradient) {
+  --color: var(--normal-color);
 }
 
 @layer base {

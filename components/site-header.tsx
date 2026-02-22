@@ -53,7 +53,7 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[var(--geist-background)]">
+    <header className="sticky top-0 z-50 w-full border-b border-[#ebebeb] bg-background dark:border-[#1f1f1f]">
       <div className="flex h-16 items-center gap-4 px-6">
         <Link
           href="/"

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function SamplePage() {
   return (
-    <div className="min-h-screen bg-[var(--geist-background)] text-[var(--geist-foreground)]">
+    <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-2xl rounded-3xl border border-border bg-background p-8 shadow-sm">
