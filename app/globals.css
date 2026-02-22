@@ -141,6 +141,10 @@
   --color: var(--normal-color);
 }
 
+.vercel-globe :is(.node-module__bkV04W__dot) {
+  display: none;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
