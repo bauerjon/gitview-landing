@@ -367,6 +367,8 @@ function DeployOnceSection() {
             "pointer-events-none absolute left-1/2 top-6 -translate-x-1/2",
             "h-[492px] w-[982px]",
             "[--guide-color:#ebebeb] dark:[--guide-color:#1f1f1f]",
+            "[--ds-background-100:#fff] [--ds-background-200:#fff] [--ds-gray-900:#171717]",
+            "dark:[--ds-background-100:#0a0a0a] dark:[--ds-background-200:#000] dark:[--ds-gray-900:#ededed]",
           ].join(" ")}
         >
           <RawSvg
