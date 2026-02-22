@@ -84,6 +84,10 @@
   /* Used by the Vercel hero SVG layers. */
   --geist-background: #fafafa;
   --geist-foreground: #171717;
+
+  /* Minimal Vercel DS vars used by injected SVGs. */
+  --ds-gray-100: #fafafa;
+  --ds-gray-1000: #171717;
 }
 
 .dark {
@@ -121,6 +125,9 @@
 
   --geist-background: #000;
   --geist-foreground: #fff;
+
+  --ds-gray-100: #0a0a0a;
+  --ds-gray-1000: #ededed;
 }
 
 @layer base {

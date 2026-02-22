@@ -80,6 +80,29 @@ async function capturePng({ page, filePath, fullPage }) {
       [data-visual-ignore] { display: none !important; }
     `,
   });
+
+  if (fullPage) {
+    const viewportHeight = page.viewportSize()?.height ?? 800;
+    await page.evaluate(async (step) => {
+      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+      let lastScrollHeight = 0;
+
+      for (let i = 0; i < 80; i++) {
+        const scrollHeight = document.body.scrollHeight;
+        const maxY = Math.max(0, scrollHeight - window.innerHeight);
+
+        if (scrollHeight === lastScrollHeight && window.scrollY >= maxY) break;
+        lastScrollHeight = scrollHeight;
+
+        window.scrollBy(0, step);
+        await sleep(140);
+      }
+
+      window.scrollTo(0, 0);
+      await sleep(200);
+    }, Math.floor(viewportHeight * 0.85));
+  }
+
   await page.waitForTimeout(500);
   await page.screenshot({ path: filePath, fullPage });
 }
