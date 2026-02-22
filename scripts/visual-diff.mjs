@@ -81,6 +81,17 @@ async function capturePng({ page, filePath, fullPage }) {
     `,
   });
 
+  await page.evaluate(() => {
+    for (const svg of document.querySelectorAll("svg")) {
+      try {
+        svg.pauseAnimations?.();
+        svg.setCurrentTime?.(0);
+      } catch {
+        // ignore
+      }
+    }
+  });
+
   if (fullPage) {
     const viewportHeight = page.viewportSize()?.height ?? 800;
     await page.evaluate(async (step) => {
@@ -122,22 +133,36 @@ async function waitForVercelStable(page) {
   await page.waitForTimeout(1500);
 }
 
-async function diffPng(aPath, bPath, outPath) {
+async function diffPng(aPath, bPath, outPath, { background } = {}) {
   const a = PNG.sync.read(await fs.readFile(aPath));
   const b = PNG.sync.read(await fs.readFile(bPath));
 
-  const width = Math.min(a.width, b.width);
-  const height = Math.min(a.height, b.height);
+  const width = Math.max(a.width, b.width);
+  const height = Math.max(a.height, b.height);
 
-  const aCropped = new PNG({ width, height });
-  const bCropped = new PNG({ width, height });
-  PNG.bitblt(a, aCropped, 0, 0, width, height, 0, 0);
-  PNG.bitblt(b, bCropped, 0, 0, width, height, 0, 0);
+  const fill = background ?? { r: 255, g: 255, b: 255, a: 255 };
+  const aCanvas = new PNG({ width, height, fill: true });
+  const bCanvas = new PNG({ width, height, fill: true });
+
+  for (let i = 0; i < aCanvas.data.length; i += 4) {
+    aCanvas.data[i] = fill.r;
+    aCanvas.data[i + 1] = fill.g;
+    aCanvas.data[i + 2] = fill.b;
+    aCanvas.data[i + 3] = fill.a;
+
+    bCanvas.data[i] = fill.r;
+    bCanvas.data[i + 1] = fill.g;
+    bCanvas.data[i + 2] = fill.b;
+    bCanvas.data[i + 3] = fill.a;
+  }
+
+  PNG.bitblt(a, aCanvas, 0, 0, a.width, a.height, 0, 0);
+  PNG.bitblt(b, bCanvas, 0, 0, b.width, b.height, 0, 0);
 
   const diff = new PNG({ width, height });
   const pixels = pixelmatch(
-    aCropped.data,
-    bCropped.data,
+    aCanvas.data,
+    bCanvas.data,
     diff.data,
     width,
     height,
@@ -181,7 +206,10 @@ async function main() {
       await waitForVercelStable(pageVercel);
       await capturePng({ page: pageVercel, filePath: vercelPng, fullPage: opts.fullPage });
 
-      const pixels = await diffPng(localPng, vercelPng, diffPngPath);
+      const background = opts.colorScheme === "dark"
+        ? { r: 0, g: 0, b: 0, a: 255 }
+        : { r: 255, g: 255, b: 255, a: 255 };
+      const pixels = await diffPng(localPng, vercelPng, diffPngPath, { background });
       console.log(JSON.stringify({ dir, localPng, vercelPng, diffPng: diffPngPath, pixels }, null, 2));
     } finally {
       await browser.close();
