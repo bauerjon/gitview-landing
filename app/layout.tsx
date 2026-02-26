@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vercel: Build and deploy the best web experiences with the AI Cloud",
+  title: "GitView — Developer Intelligence",
   description:
-    "Vercel gives developers the frameworks, workflows, and infrastructure to build a faster, more personalized web.",
+    "GitView helps engineering leaders combine delivery metrics with continuous team feedback to improve throughput and developer experience.",
 };
 
 export default function RootLayout({

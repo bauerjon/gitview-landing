@@ -12,8 +12,8 @@ export default function SamplePage() {
         <div className="mx-auto max-w-2xl rounded-3xl border border-border bg-background p-8 shadow-sm">
           <h1 className="text-3xl font-semibold tracking-tight">Sample page</h1>
           <p className="mt-3 text-muted-foreground">
-            All links and buttons route here for now. We can split these into
-            real subpages later.
+            A simple stub page used for experiments and link testing during
+            development.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild>

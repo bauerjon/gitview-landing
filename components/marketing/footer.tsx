@@ -1,111 +1,122 @@
 import Link from "next/link";
 
-import { VercelMark, VercelWordmark } from "@/components/vercel-logo";
-
-const SAMPLE_HREF = "/sample";
+import { APP_LINKS } from "@/lib/marketing/links";
+import { GitViewMark, GitViewWordmark } from "@/components/gitview-logo";
 
 export function MarketingFooter() {
   return (
-    <footer className="border-t border-[#ebebeb] bg-background dark:border-[#1f1f1f]">
-      <div className="mx-auto max-w-[1080px] border-x border-[#ebebeb] px-6 py-16 dark:border-[#1f1f1f] lg:px-11">
+    <footer className="border-t border-border bg-background">
+      <div className="mx-auto max-w-[1120px] px-6 py-16">
         <div className="grid gap-12 md:grid-cols-[1.2fr_2fr]">
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2">
-              <VercelMark className="h-4 w-4" />
-              <VercelWordmark />
+              <GitViewMark className="h-4 w-4" />
+              <GitViewWordmark className="text-[15px]" />
             </Link>
-            <p className="max-w-sm text-[12px] leading-5 text-[#666666] dark:text-white/60">
-              Vercel provides the developer tools and cloud infrastructure to
-              build, scale, and secure a faster, more personalized web.
+            <p className="max-w-sm text-sm leading-6 text-muted-foreground">
+              Developer intelligence that unifies delivery metrics and continuous
+              team feedback—so you can lead with clarity.
             </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <a
+                href={APP_LINKS.signup()}
+                className="text-sm font-medium underline-offset-4 hover:underline"
+              >
+                Try GitView for free
+              </a>
+              <span className="text-muted-foreground">·</span>
+              <a
+                href={APP_LINKS.login()}
+                className="text-sm font-medium underline-offset-4 hover:underline"
+              >
+                Log in
+              </a>
+            </div>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="grid gap-3 text-[12px] leading-5">
-              <div className="font-medium text-[#171717] dark:text-[#ededed]">
-                Resources
-              </div>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Docs
+            <div className="grid gap-3 text-sm">
+              <div className="font-medium">Product</div>
+              <Link
+                href="/#product"
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Overview
               </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Guides
+              <Link
+                href="/pricing"
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Pricing
               </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
+              <Link
+                href="/contact"
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Contact sales
+              </Link>
+            </div>
+
+            <div className="grid gap-3 text-sm">
+              <div className="font-medium">Resources</div>
+              <a
+                href="https://docs.gitview.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Documentation
+              </a>
+              <Link
+                href="/blog"
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
                 Blog
               </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Changelog
+            </div>
+
+            <div className="grid gap-3 text-sm">
+              <div className="font-medium">Company</div>
+              <Link
+                href="/privacy"
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Terms
               </Link>
             </div>
 
-            <div className="grid gap-3 text-[12px] leading-5">
-              <div className="font-medium text-[#171717] dark:text-[#ededed]">
-                Frameworks
-              </div>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Next.js
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                SvelteKit
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Nuxt
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Remix
-              </Link>
-            </div>
-
-            <div className="grid gap-3 text-[12px] leading-5">
-              <div className="font-medium text-[#171717] dark:text-[#ededed]">
-                Company
-              </div>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                About
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Careers
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Security
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Enterprise
-              </Link>
-            </div>
-
-            <div className="grid gap-3 text-[12px] leading-5">
-              <div className="font-medium text-[#171717] dark:text-[#ededed]">
-                Community
-              </div>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Open Source
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Twitter / X
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                GitHub
-              </Link>
-              <Link href={SAMPLE_HREF} className="text-[#666666] hover:text-[#171717] dark:text-white/60 dark:hover:text-white">
-                Contact
-              </Link>
+            <div className="grid gap-3 text-sm">
+              <div className="font-medium">App</div>
+              <a
+                href={APP_LINKS.signup()}
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Create account
+              </a>
+              <a
+                href={APP_LINKS.login()}
+                className="text-muted-foreground underline-offset-4 hover:underline"
+              >
+                Sign in
+              </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-[#ebebeb] pt-6 text-[12px] leading-5 text-[#666666] dark:border-[#1f1f1f] dark:text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <div>© 2026 Vercel Inc.</div>
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <div>© {new Date().getFullYear()} GitView LLC</div>
           <div className="flex items-center gap-4">
-            <Link href={SAMPLE_HREF} className="hover:text-[#171717] dark:hover:text-white">
-              Privacy Policy
+            <Link href="/privacy" className="underline-offset-4 hover:underline">
+              Privacy
             </Link>
-            <Link href={SAMPLE_HREF} className="hover:text-[#171717] dark:hover:text-white">
+            <Link href="/terms" className="underline-offset-4 hover:underline">
               Terms
-            </Link>
-            <Link href={SAMPLE_HREF} className="hover:text-[#171717] dark:hover:text-white">
-              Cookie Preferences
             </Link>
           </div>
         </div>
@@ -113,3 +124,4 @@ export function MarketingFooter() {
     </footer>
   );
 }
+
