@@ -49,9 +49,7 @@ function GitViewWordmark({ className }: { className?: string }) {
   return (
     <span className={className}>
       <span className="font-semibold tracking-tight">Git</span>
-      <span className="font-medium tracking-tight text-muted-foreground">
-        View
-      </span>
+      <span className="font-medium tracking-tight">View</span>
     </span>
   );
 }
