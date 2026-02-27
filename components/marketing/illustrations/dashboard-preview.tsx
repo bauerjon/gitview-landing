@@ -42,13 +42,6 @@ export function DashboardPreview({ className }: { className?: string }) {
       )}
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          background:
-            "radial-gradient(800px 280px at 40% 15%, rgb(var(--brand) / 0.25), transparent 60%), radial-gradient(700px 220px at 85% 30%, rgb(var(--brand) / 0.18), transparent 55%)",
-        }}
-      />
-      <div
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:

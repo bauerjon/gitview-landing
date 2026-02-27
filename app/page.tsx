@@ -78,13 +78,6 @@ export default function HomePage() {
       <main>
         <section className="relative overflow-hidden">
           <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(1000px 420px at 30% 20%, rgb(var(--brand) / 0.18), transparent 60%), radial-gradient(900px 380px at 85% 15%, rgb(var(--brand) / 0.12), transparent 60%)",
-            }}
-          />
-          <div
             className="pointer-events-none absolute inset-0 opacity-40"
             style={{
               backgroundImage:
