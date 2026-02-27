@@ -13,17 +13,30 @@ function GitViewHeaderMark({ className }: { className?: string }) {
           <stop offset="1" stopColor="rgb(var(--brand) / 0.6)" />
         </linearGradient>
       </defs>
-      <rect x="1.25" y="1.25" width="13.5" height="13.5" rx="3" fill="url(#gitviewMark)" />
-      <path
-        d="M5.1 11.1V4.9h2.1c1.7 0 2.8.95 2.8 2.45 0 1.51-1.1 2.45-2.8 2.45H6.6v1.31H5.1Zm1.5-2.62h.6c.86 0 1.33-.44 1.33-1.13 0-.68-.47-1.13-1.33-1.13h-.6v2.26Z"
-        fill="white"
-        fillOpacity="0.92"
+      <rect
+        x="1.25"
+        y="1.25"
+        width="13.5"
+        height="13.5"
+        rx="3"
+        fill="url(#gitviewMark)"
       />
-      <path
-        d="M10.6 11.1 12.9 4.9h1.6l-2.4 6.2h-1.5Z"
+      <text
+        x="8"
+        y="8.2"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize="9"
+        fontWeight="700"
+        letterSpacing="-0.6"
         fill="white"
-        fillOpacity="0.78"
-      />
+        fillOpacity="0.95"
+        fontFamily={
+          "var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+        }
+      >
+        {"//"}
+      </text>
     </svg>
   );
 }
@@ -44,4 +57,3 @@ function GitViewWordmark({ className }: { className?: string }) {
 }
 
 export { GitViewHeaderMark, GitViewMark, GitViewWordmark };
-
