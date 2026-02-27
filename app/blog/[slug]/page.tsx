@@ -9,12 +9,13 @@ export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
-export default function BlogPostPage({
+export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string } | Promise<{ slug: string }>;
 }) {
-  const post = getBlogPost(params.slug);
+  const { slug } = await Promise.resolve(params);
+  const post = getBlogPost(slug);
   if (!post) return notFound();
 
   return (
@@ -27,4 +28,3 @@ export default function BlogPostPage({
     </div>
   );
 }
-
