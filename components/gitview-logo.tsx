@@ -2,8 +2,8 @@ function GitViewHeaderMark({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 16 16"
-      width="16"
-      height="16"
+      width="18"
+      height="18"
       aria-hidden="true"
       className={className}
     >
@@ -23,7 +23,7 @@ function GitViewHeaderMark({ className }: { className?: string }) {
       />
       <text
         x="8"
-        y="8.2"
+        y="8.3"
         textAnchor="middle"
         dominantBaseline="middle"
         fontSize="9"

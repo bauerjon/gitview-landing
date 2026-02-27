@@ -40,7 +40,7 @@ export function SiteHeader({ className }: { className?: string }) {
           aria-label="GitView home"
           onClick={() => setMobileOpen(false)}
         >
-          <GitViewHeaderMark className="h-4 w-4" />
+          <GitViewHeaderMark className="h-[18px] w-[18px]" />
           <GitViewWordmark className="text-[15px]" />
         </Link>
 
@@ -114,4 +114,3 @@ export function SiteHeader({ className }: { className?: string }) {
     </header>
   );
 }
-
