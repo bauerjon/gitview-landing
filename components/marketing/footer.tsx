@@ -10,7 +10,7 @@ export function MarketingFooter() {
         <div className="grid gap-12 md:grid-cols-[1.2fr_2fr]">
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2">
-              <GitViewMark className="h-[18px] w-[18px]" />
+              <GitViewMark className="h-5 w-5" />
               <GitViewWordmark className="text-[15px]" />
             </Link>
             <p className="max-w-sm text-sm leading-6 text-muted-foreground">

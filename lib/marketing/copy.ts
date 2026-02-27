@@ -1,9 +1,9 @@
 export const MARKETING_COPY = {
   hero: {
     eyebrow: "Software engineering intelligence",
-    headline: "Engineering intelligence for AI-first teams.",
+    headline: "Engineering intelligence built for AI scale.",
     subhead:
-      "AI can increase output, but the bottleneck often shifts to review, coordination, and reliability. GitView unifies delivery metrics and pulse feedback to improve throughput without increasing rework or incident risk.",
+      "AI can increase output, but the bottleneck often shifts to review, coordination, and reliability. GitView unifies delivery metrics and pulse feedback so leaders can improve throughput without increasing rework or incident risk.",
     primaryCta: "Try GitView for free",
     secondaryCta: "Log in",
   },
