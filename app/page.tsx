@@ -155,7 +155,7 @@ export default function HomePage() {
               <FeatureCard
                 icon={<BarChart3 className="h-5 w-5" />}
                 title="Flow metrics for real productivity"
-                body="Track activity, trends, and cycle time so productivity reflects end-to-end delivery—not just output volume."
+                body="Track activity, trends, and cycle time so productivity reflects end to end delivery, not just output volume."
               />
               <FeatureCard
                 icon={<MessagesSquare className="h-5 w-5" />}

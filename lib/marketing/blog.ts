@@ -19,13 +19,13 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "engineering-analytics-that-drives-action",
     title: "Engineering analytics that drive action (not vanity metrics)",
     description:
-      "A practical approach to measuring productivity using throughput, flow, and reliability—without incentivizing the wrong behaviors.",
+      "A practical approach to measuring productivity using throughput, flow, and reliability, without incentivizing the wrong behaviors.",
     publishedAt: "2026-02-27",
     topics: ["Analytics", "Productivity", "Leadership"],
     blocks: [
       {
         type: "p",
-        text: "AI-assisted coding is changing how teams produce software. Output can go up quickly—but that doesn’t automatically mean you’re delivering better outcomes. The goal of engineering analytics isn’t to rank individuals. It’s to help leaders see where the system is constrained and where to invest next.",
+        text: "AI-assisted coding is changing how teams produce software. Output can go up quickly. That does not automatically mean you are delivering better outcomes. The goal of engineering analytics is not to rank individuals. It is to help leaders see where the system is constrained and where to invest next.",
       },
       { type: "h2", text: "Start with flow, not volume" },
       {
@@ -48,7 +48,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Use qualitative feedback to explain the numbers" },
       {
         type: "p",
-        text: "Even great dashboards can’t tell you why things changed. Pulse surveys fill in the missing context—capturing sentiment and drivers like clarity, tooling, on-call load, and process friction.",
+        text: "Even great dashboards cannot tell you why things changed. Pulse surveys fill in the missing context by capturing sentiment and drivers like clarity, tooling, on-call load, and process friction.",
       },
       {
         type: "callout",
@@ -71,7 +71,7 @@ export const BLOG_POSTS: BlogPost[] = [
     blocks: [
       {
         type: "p",
-        text: "When AI makes it easier to generate code, review becomes the primary quality gate. The challenge is balancing speed with safety—especially as PR volume grows and changes become harder to reason about.",
+        text: "When AI makes it easier to generate code, review becomes the primary quality gate. The challenge is balancing speed with safety, especially as PR volume grows and changes become harder to reason about.",
       },
       { type: "h2", text: "Measure the review system, not the reviewer" },
       {
@@ -99,7 +99,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "callout",
         title: "In the AI era",
-        text: "Review isn’t just about correctness—it’s about maintaining shared context and preventing silent complexity from creeping in.",
+        text: "Review is not just about correctness. It is also about maintaining shared context and preventing silent complexity from creeping in.",
       },
     ],
   },
@@ -113,12 +113,12 @@ export const BLOG_POSTS: BlogPost[] = [
     blocks: [
       {
         type: "p",
-        text: "Qualitative feedback is often the missing piece in engineering analytics. Dashboards show what changed; pulse surveys help you understand why—and what to do next.",
+        text: "Qualitative feedback is often the missing piece in engineering analytics. Dashboards show what changed. Pulse surveys help you understand why, and what to do next.",
       },
       { type: "h2", text: "Keep it lightweight and consistent" },
       {
         type: "p",
-        text: "A pulse program works when it’s easy to answer and safe to be honest. Short, anonymous snapshots beat long annual surveys—especially when they’re delivered in tools teams already use.",
+        text: "A pulse program works when it is easy to answer and safe to be honest. Short, anonymous snapshots beat long annual surveys, especially when they are delivered in tools teams already use.",
       },
       {
         type: "ul",
@@ -178,7 +178,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "callout",
         title: "Modern productivity",
-        text: "In the AI era, productivity is a system property: fast flow, high review quality, and stable operations—supported by continuous feedback loops.",
+        text: "In the AI era, productivity is a system property: fast flow, high review quality, and stable operations, supported by continuous feedback loops.",
       },
     ],
   },
@@ -186,13 +186,13 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "governance-for-ai-assisted-shipping",
     title: "Governance for AI-assisted shipping (without slowing down)",
     description:
-      "A practical playbook for guardrails: review quality, deploy reliability, and healthy developer experience—measured at the org level.",
+      "A practical playbook for guardrails: review quality, deploy reliability, and healthy developer experience, measured at the org level.",
     publishedAt: "2026-02-27",
     topics: ["AI", "Governance", "Delivery"],
     blocks: [
       {
         type: "p",
-        text: "The biggest AI risk isn’t that code is “wrong.” It’s that complexity increases quietly while teams ship faster—until reliability and maintainability degrade. Governance doesn’t have to mean heavy process. It can mean better feedback loops.",
+        text: "The biggest AI risk is not that code is “wrong.” It is that complexity increases quietly while teams ship faster, until reliability and maintainability degrade. Governance does not have to mean heavy process. It can mean better feedback loops.",
       },
       { type: "h2", text: "Guardrail 1: review health" },
       {
@@ -207,7 +207,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Guardrail 3: human sustainability" },
       {
         type: "p",
-        text: "AI can reduce toil—but it can also increase cognitive load through more context switching and larger change surfaces. Capture continuous feedback with pulse drivers and act on trends early.",
+        text: "AI can reduce toil, but it can also increase cognitive load through more context switching and larger change surfaces. Capture continuous feedback with pulse drivers and act on trends early.",
       },
       {
         type: "callout",
@@ -221,4 +221,3 @@ export const BLOG_POSTS: BlogPost[] = [
 export function getBlogPost(slug: string) {
   return BLOG_POSTS.find((post) => post.slug === slug) ?? null;
 }
-

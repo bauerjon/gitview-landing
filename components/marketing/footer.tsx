@@ -15,7 +15,7 @@ export function MarketingFooter() {
             </Link>
             <p className="max-w-sm text-sm leading-6 text-muted-foreground">
               Developer intelligence that unifies delivery metrics and continuous
-              team feedback—so you can lead with clarity.
+              team feedback, so you can lead with clarity.
             </p>
             <div className="flex flex-wrap items-center gap-2">
               <a
@@ -124,4 +124,3 @@ export function MarketingFooter() {
     </footer>
   );
 }
-

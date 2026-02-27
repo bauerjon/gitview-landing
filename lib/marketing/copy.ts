@@ -1,9 +1,9 @@
 export const MARKETING_COPY = {
   hero: {
-    eyebrow: "Engineering productivity, measured end-to-end",
-    headline: "Ship faster with AI—and stay in control.",
+    eyebrow: "Productivity in the agentic era",
+    headline: "Make AI output ship.",
     subhead:
-      "AI increases output. GitView helps leaders measure what matters: flow, review quality, reliability, and continuous team feedback—so productivity improves without surprises.",
+      "AI can increase output, but it also shifts the bottleneck to review, coordination, and reliability. GitView measures flow, review queues, and continuous team feedback so leaders can improve throughput without increasing rework or incident risk.",
     primaryCta: "Try GitView for free",
     secondaryCta: "Log in",
   },
@@ -43,7 +43,7 @@ export const MARKETING_COPY = {
     },
     {
       q: "Who is GitView for?",
-      a: "GitView is designed for engineering managers, directors, and CTOs who need a clear, org-wide view of delivery performance and team health—especially in larger teams.",
+      a: "GitView is designed for engineering managers, directors, and CTOs who need a clear, org-wide view of delivery performance and team health, especially in larger teams.",
     },
     {
       q: "What makes GitView different?",
