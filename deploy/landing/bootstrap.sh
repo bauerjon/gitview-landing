@@ -105,7 +105,7 @@ remote bash -lc "set -euo pipefail
   corepack enable >/dev/null 2>&1 || true
 
   # systemd unit
-  cat > /etc/systemd/system/'$LANDING_SYSTEMD_UNIT' <<'UNIT'
+  cat > /etc/systemd/system/'$LANDING_SYSTEMD_UNIT' <<UNIT
 [Unit]
 Description=GitView Landing (Next.js)
 After=network.target
@@ -118,7 +118,7 @@ Environment=NODE_ENV=production
 Environment=PORT=$LANDING_PORT
 Environment=HOSTNAME=127.0.0.1
 Environment=NEXT_PUBLIC_APP_BASE_URL=$NEXT_PUBLIC_APP_BASE_URL
-ExecStart=/usr/bin/env bash -lc 'corepack enable >/dev/null 2>&1 || true; pnpm start -p $LANDING_PORT'
+ExecStart=/usr/bin/env bash -lc 'corepack enable >/dev/null 2>&1 || true; corepack prepare pnpm@10.30.1 --activate >/dev/null 2>&1 || true; pnpm start -p $LANDING_PORT'
 Restart=always
 RestartSec=2
 
@@ -135,16 +135,16 @@ server {
   listen 80 default_server;
   listen [::]:80 default_server;
 
-  server_name $LANDING_DOMAIN $LANDING_WWW_DOMAIN _;
+  server_name ${LANDING_DOMAIN} ${LANDING_WWW_DOMAIN} _;
 
   location / {
-    proxy_pass http://127.0.0.1:$LANDING_PORT;
+    proxy_pass http://127.0.0.1:${LANDING_PORT};
     proxy_http_version 1.1;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Host \$host;
+    proxy_set_header X-Real-IP \$remote_addr;
+    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto \$scheme;
+    proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection \"upgrade\";
   }
 }
@@ -166,4 +166,3 @@ NGINX
 
   echo 'Bootstrap complete. Deploy the app next via deploy.sh.' >&2
 "
-

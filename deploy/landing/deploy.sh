@@ -146,17 +146,25 @@ DEFAULT_EXCLUDES=(
   --exclude .next
 )
 
-run_cmd rsync -az --delete -e "$RSYNC_SSH" "${DEFAULT_EXCLUDES[@]}" "$DEPLOY_DIR/" "$REMOTE"
+run_cmd rsync -az --delete --no-perms --no-owner --no-group -e "$RSYNC_SSH" "${DEFAULT_EXCLUDES[@]}" "$DEPLOY_DIR/" "$REMOTE"
 
 remote bash -lc "set -euo pipefail
-  cd '$LANDING_APP_DIR'
-  corepack enable >/dev/null 2>&1 || true
-  if command -v corepack >/dev/null 2>&1; then
-    corepack prepare pnpm@9.15.4 --activate >/dev/null 2>&1 || true
-  fi
-  pnpm install --frozen-lockfile
-  pnpm build
+  mkdir -p '$LANDING_APP_DIR'
+  chown -R gitview:gitview /opt/gitview-landing
+  chmod -R u=rwX,go=rX /opt/gitview-landing
+
+  # Install + build as the service user to avoid permission issues.
+  sudo -u gitview -H env LANDING_APP_DIR='$LANDING_APP_DIR' bash -lc '
+    set -euo pipefail
+    cd \"\$LANDING_APP_DIR\"
+    corepack enable >/dev/null 2>&1 || true
+    if command -v corepack >/dev/null 2>&1; then
+      corepack prepare pnpm@10.30.1 --activate >/dev/null 2>&1 || true
+    fi
+    pnpm install --frozen-lockfile
+    pnpm build
+  '
+
   systemctl restart '$LANDING_SYSTEMD_UNIT'
   systemctl --no-pager --full status '$LANDING_SYSTEMD_UNIT' | sed -n '1,20p'
 "
-
