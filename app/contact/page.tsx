@@ -35,14 +35,17 @@ export default function ContactPage() {
                 Send a note with your team size, tools, and what you want to
                 measure.
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button asChild className="rounded-md">
+              <div className="mt-6 flex flex-col gap-3 md:flex-row">
+                <Button
+                  asChild
+                  className="w-full min-w-0 rounded-md whitespace-normal md:flex-1"
+                >
                   <a href={`mailto:${SALES_EMAIL}`}>Email {SALES_EMAIL}</a>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="rounded-md bg-background"
+                  className="w-full min-w-0 rounded-md bg-background whitespace-normal md:flex-1"
                 >
                   <a href={APP_LINKS.signup()}>
                     Start free trial <ArrowRight className="h-4 w-4" />
@@ -92,4 +95,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

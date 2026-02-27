@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { APP_LINKS } from "@/lib/marketing/links";
+import { BLOG_POSTS } from "@/lib/marketing/blog";
 import { SiteHeader } from "@/components/site-header";
 import { MarketingFooter } from "@/components/marketing/footer";
 import { Button } from "@/components/ui/button";
@@ -17,8 +18,8 @@ export default function BlogPage() {
             Blog
           </h1>
           <p className="mt-4 text-base leading-7 text-muted-foreground">
-            Posts coming soon. In the meantime, start exploring dashboards in
-            the app.
+            Practical guidance on engineering productivity, delivery analytics,
+            and leading teams in the AI age.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button asChild className="rounded-md">
@@ -37,23 +38,28 @@ export default function BlogPage() {
         </div>
 
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {["Engineering analytics", "Code review", "Pulse surveys"].map(
-            (title) => (
-              <div
-                key={title}
-                className="rounded-3xl border border-border bg-card p-6 shadow-sm"
-              >
-                <div className="text-xs text-muted-foreground">Coming soon</div>
-                <div className="mt-2 text-base font-semibold tracking-tight">
-                  {title}
-                </div>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  We’re working on articles and guides for teams rolling out
-                  developer intelligence.
-                </p>
+          {BLOG_POSTS.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="group rounded-3xl border border-border bg-card p-6 shadow-sm transition-colors hover:bg-accent/30"
+            >
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <time dateTime={post.publishedAt}>{post.publishedAt}</time>
+                <span>·</span>
+                <span className="truncate">{post.topics.join(" · ")}</span>
               </div>
-            )
-          )}
+              <div className="mt-3 text-base font-semibold tracking-tight text-foreground group-hover:underline underline-offset-4">
+                {post.title}
+              </div>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {post.description}
+              </p>
+              <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                Read post <ArrowRight className="h-4 w-4" />
+              </div>
+            </Link>
+          ))}
         </div>
       </main>
 
@@ -61,4 +67,3 @@ export default function BlogPage() {
     </div>
   );
 }
-

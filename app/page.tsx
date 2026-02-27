@@ -130,12 +130,12 @@ export default function HomePage() {
                   Read-only access
                 </div>
                 <div className="inline-flex items-center gap-2">
-                  <SlidersHorizontal className="h-4 w-4 text-primary" />
-                  Custom dashboards
+                  <Clock4 className="h-4 w-4 text-primary" />
+                  Flow metrics
                 </div>
                 <div className="inline-flex items-center gap-2">
-                  <MessagesSquare className="h-4 w-4 text-primary" />
-                  Pulse surveys
+                  <GitPullRequest className="h-4 w-4 text-primary" />
+                  Review signals
                 </div>
               </div>
             </div>
@@ -154,18 +154,18 @@ export default function HomePage() {
             <div className="mt-12 grid gap-4 lg:grid-cols-3">
               <FeatureCard
                 icon={<BarChart3 className="h-5 w-5" />}
-                title="Quant metrics you can trust"
-                body="Activity, trends, cycle time, and DORA metrics—built from your delivery data and organized for leaders."
+                title="Flow metrics for real productivity"
+                body="Track activity, trends, and cycle time so productivity reflects end-to-end delivery—not just output volume."
               />
               <FeatureCard
                 icon={<MessagesSquare className="h-5 w-5" />}
                 title="Continuous pulse feedback"
-                body="Collect anonymous feedback with pulse snapshots and drivers, delivered through Slack or Microsoft Teams."
+                body="Capture sentiment and drivers through lightweight pulses delivered in Slack or Microsoft Teams."
               />
               <FeatureCard
                 icon={<LineChart className="h-5 w-5" />}
-                title="Unified insights"
-                body="Pair sentiment and drivers with delivery changes to prioritize actions that improve outcomes and team health."
+                title="Guardrails for AI-assisted shipping"
+                body="Pair review signals and reliability metrics with qualitative feedback to ship faster with fewer surprises."
               />
             </div>
           </div>

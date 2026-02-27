@@ -1,24 +1,24 @@
 export const MARKETING_COPY = {
   hero: {
-    eyebrow: "Software engineering intelligence",
-    headline: "Developer intelligence for modern teams.",
+    eyebrow: "Engineering productivity, measured end-to-end",
+    headline: "Ship faster with AI—and stay in control.",
     subhead:
-      "GitView unifies delivery metrics with continuous team feedback so leaders can improve throughput and make better, faster decisions.",
+      "AI increases output. GitView helps leaders measure what matters: flow, review quality, reliability, and continuous team feedback—so productivity improves without surprises.",
     primaryCta: "Try GitView for free",
     secondaryCta: "Log in",
   },
   sections: {
     actionable: {
       title: "Actionable insights from qualitative + quantitative signals",
-      body: "Unify engineering data with continuous pulse feedback to spot where teams are blocked and what needs attention—without relying on anecdotes alone.",
+      body: "When code is cheaper to produce, coordination becomes the constraint. Unify delivery metrics with pulse feedback to see what’s slowing teams down and why.",
     },
     throughput: {
       title: "Increase throughput by finding bottlenecks fast",
-      body: "Break down cycle time across development, review, and merge. Identify where work slows down and track improvements over time.",
+      body: "Break down cycle time across build, review, and merge. Identify queue time and wait states, then track improvements over time.",
     },
     review: {
       title: "Improve code review quality without guesswork",
-      body: "Understand review behavior across the org with review stats and impact signals—so coaching is based on evidence, not vibes.",
+      body: "As PR volume rises, review is your guardrail. Use review stats and impact signals to improve quality without grinding throughput to a halt.",
     },
     signals: {
       title: "One place for engineering signals",
