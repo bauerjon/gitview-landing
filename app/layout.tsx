@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gitview.ai"),
   title: "GitView - Developer Intelligence",
   description:
     "GitView helps engineering leaders combine delivery metrics with continuous team feedback to improve throughput and developer experience.",

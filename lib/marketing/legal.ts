@@ -7,7 +7,7 @@ export const LEGAL = {
         title: "Overview",
         content: [
           "GitView LLC is located in Chicago, IL, USA.",
-          "It is GitView LLC’s policy to respect your privacy regarding any information we may collect while operating our website. This Privacy Policy applies to https://gitview.com (\"us\", \"we\", or \"https://gitview.com\"). We respect your privacy and are committed to protecting personally identifiable information you may provide us through the Website. We have adopted this privacy policy (\"Privacy Policy\") to explain what information may be collected on our Website, how we use this information, and under what circumstances we may disclose the information to third parties. This Privacy Policy applies only to information we collect through the Website and does not apply to our collection of information from other sources.",
+          "It is GitView LLC’s policy to respect your privacy regarding any information we may collect while operating our website. This Privacy Policy applies to https://gitview.ai (\"us\", \"we\", or \"https://gitview.ai\"). We respect your privacy and are committed to protecting personally identifiable information you may provide us through the Website. We have adopted this privacy policy (\"Privacy Policy\") to explain what information may be collected on our Website, how we use this information, and under what circumstances we may disclose the information to third parties. This Privacy Policy applies only to information we collect through the Website and does not apply to our collection of information from other sources.",
           "This Privacy Policy, together with the Terms and conditions posted on our Website, set forth the general rules and policies governing your use of our Website. Depending on your activities when visiting our Website, you may be required to agree to additional terms and conditions.",
         ],
       },
@@ -15,13 +15,13 @@ export const LEGAL = {
         title: "Website Visitors",
         content: [
           "Like most website operators, GitView LLC collects non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. GitView LLC’s purpose in collecting non-personally identifying information is to better understand how GitView LLC’s visitors use its website. From time to time, GitView LLC may release non-personally-identifying information in the aggregate, e.g., by publishing a report on trends in the usage of its website.",
-          "GitView LLC also collects potentially personally-identifying information like Internet Protocol (IP) addresses for logged in users and for users leaving comments on https://gitview.com blog posts. GitView LLC only discloses logged in user and commenter IP addresses under the same circumstances that it uses and discloses personally-identifying information as described below.",
+          "GitView LLC also collects potentially personally-identifying information like Internet Protocol (IP) addresses for logged in users and for users leaving comments on https://gitview.ai blog posts. GitView LLC only discloses logged in user and commenter IP addresses under the same circumstances that it uses and discloses personally-identifying information as described below.",
         ],
       },
       {
         title: "Gathering of Personally-Identifying Information",
         content: [
-          "Certain visitors to GitView LLC’s websites choose to interact with GitView LLC in ways that require GitView LLC to gather personally-identifying information. The amount and type of information that GitView LLC gathers depends on the nature of the interaction. For example, we ask visitors who sign up for a blog at https://gitview.com to provide a username and email address.",
+          "Certain visitors to GitView LLC’s websites choose to interact with GitView LLC in ways that require GitView LLC to gather personally-identifying information. The amount and type of information that GitView LLC gathers depends on the nature of the interaction. For example, we ask visitors who sign up for a blog at https://gitview.ai to provide a username and email address.",
         ],
       },
       {
@@ -44,9 +44,9 @@ export const LEGAL = {
         ],
       },
       {
-        title: "https://gitview.com uses Google AdWords for remarketing",
+        title: "https://gitview.ai uses Google AdWords for remarketing",
         content: [
-          "https://gitview.com uses the remarketing services to advertise on third party websites (including Google) to previous visitors to our site. It could mean that we advertise to previous visitors who haven’t completed a task on our site, for example using the contact form to make an enquiry. This could be in the form of an advertisement on the Google search results page, or a site in the Google Display Network. Third-party vendors, including Google, use cookies to serve ads based on someone’s past visits. Of course, any data collected will be used in accordance with our own privacy policy and Google’s privacy policy.",
+          "https://gitview.ai uses the remarketing services to advertise on third party websites (including Google) to previous visitors to our site. It could mean that we advertise to previous visitors who haven’t completed a task on our site, for example using the contact form to make an enquiry. This could be in the form of an advertisement on the Google search results page, or a site in the Google Display Network. Third-party vendors, including Google, use cookies to serve ads based on someone’s past visits. Of course, any data collected will be used in accordance with our own privacy policy and Google’s privacy policy.",
           "You can set preferences for how Google advertises to you using the Google Ad Preferences page, and if you want to you can opt out of interest-based advertising entirely by cookie settings or permanently using a browser plugin.",
         ],
       },
@@ -54,7 +54,7 @@ export const LEGAL = {
         title: "Protection of Certain Personally-Identifying Information",
         content: [
           "GitView LLC discloses potentially personally-identifying and personally-identifying information only to those of its employees, contractors and affiliated organizations that (i) need to know that information in order to process it on GitView LLC’s behalf or to provide services available at GitView LLC’s website, and (ii) that have agreed not to disclose it to others. Some of those employees, contractors and affiliated organizations may be located outside of your home country; by using GitView LLC’s website, you consent to the transfer of such information to them. GitView LLC will not rent or sell potentially personally-identifying and personally-identifying information to anyone. Other than to its employees, contractors and affiliated organizations, as described above, GitView LLC discloses potentially personally-identifying and personally-identifying information only in response to a subpoena, court order or other governmental request, or when GitView LLC believes in good faith that disclosure is reasonably necessary to protect the property or rights of GitView LLC, third parties or the public at large.",
-          "If you are a registered user of https://gitview.com and have supplied your email address, GitView LLC may occasionally send you an email to tell you about new features, solicit your feedback, or just keep you up to date with what’s going on with GitView LLC and our products. We primarily use our blog to communicate this type of information, so we expect to keep this type of email to a minimum. If you send us a request (for example via a support email or via one of our feedback mechanisms), we reserve the right to publish it in order to help us clarify or respond to your request or to help us support other users. GitView LLC takes all measures reasonably necessary to protect against the unauthorized access, use, alteration or destruction of potentially personally-identifying and personally-identifying information.",
+          "If you are a registered user of https://gitview.ai and have supplied your email address, GitView LLC may occasionally send you an email to tell you about new features, solicit your feedback, or just keep you up to date with what’s going on with GitView LLC and our products. We primarily use our blog to communicate this type of information, so we expect to keep this type of email to a minimum. If you send us a request (for example via a support email or via one of our feedback mechanisms), we reserve the right to publish it in order to help us clarify or respond to your request or to help us support other users. GitView LLC takes all measures reasonably necessary to protect against the unauthorized access, use, alteration or destruction of potentially personally-identifying and personally-identifying information.",
         ],
       },
       {
@@ -73,7 +73,7 @@ export const LEGAL = {
         title: "Cookies",
         content: [
           "To enrich and perfect your online experience, GitView LLC uses \"Cookies\", similar technologies and services provided by others to display personalized content, appropriate advertising and store your preferences on your computer.",
-          "A cookie is a string of information that a website stores on a visitor’s computer, and that the visitor’s browser provides to the website each time the visitor returns. GitView LLC uses cookies to help GitView LLC identify and track visitors, their usage of https://gitview.com, and their website access preferences. GitView LLC visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using GitView LLC’s websites, with the drawback that certain features of GitView LLC’s websites may not function properly without the aid of cookies.",
+          "A cookie is a string of information that a website stores on a visitor’s computer, and that the visitor’s browser provides to the website each time the visitor returns. GitView LLC uses cookies to help GitView LLC identify and track visitors, their usage of https://gitview.ai, and their website access preferences. GitView LLC visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using GitView LLC’s websites, with the drawback that certain features of GitView LLC’s websites may not function properly without the aid of cookies.",
           "By continuing to navigate our website without changing your cookie settings, you hereby acknowledge and agree to GitView LLC’s use of cookies.",
         ],
       },
@@ -118,13 +118,13 @@ export const LEGAL = {
       {
         title: "License",
         content: [
-          "Unless otherwise stated, GitView, LLC and/or it’s licensors own the intellectual property rights for all material on GitView, LLC. All intellectual property rights are reserved. You may view and/or print pages from https://gitview.com for your own personal use subject to restrictions set in these terms and conditions.",
+          "Unless otherwise stated, GitView, LLC and/or it’s licensors own the intellectual property rights for all material on GitView, LLC. All intellectual property rights are reserved. You may view and/or print pages from https://gitview.ai for your own personal use subject to restrictions set in these terms and conditions.",
           "You must not:",
         ],
         list: [
-          "Republish material from https://gitview.com",
-          "Sell, rent or sub-license material from https://gitview.com",
-          "Reproduce, duplicate or copy material from https://gitview.com",
+          "Republish material from https://gitview.ai",
+          "Sell, rent or sub-license material from https://gitview.ai",
+          "Reproduce, duplicate or copy material from https://gitview.ai",
         ],
         afterList: [
           "Redistribute content from GitView, LLC (unless content is specifically made for redistribution).",
@@ -145,4 +145,3 @@ export const LEGAL = {
     ],
   },
 } as const;
-

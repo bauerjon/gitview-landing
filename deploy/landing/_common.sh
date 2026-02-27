@@ -89,8 +89,10 @@ load_server_config() {
   : "${LANDING_USER:?LANDING_USER is required}"
   : "${LANDING_SSH_KEY:?LANDING_SSH_KEY is required}"
   : "${LANDING_APP_DIR:?LANDING_APP_DIR is required}"
-  : "${LANDING_DOMAIN:?LANDING_DOMAIN is required}"
-  : "${LANDING_WWW_DOMAIN:?LANDING_WWW_DOMAIN is required}"
+  : "${LANDING_CANONICAL_DOMAIN:?LANDING_CANONICAL_DOMAIN is required}"
+  : "${LANDING_CANONICAL_WWW_DOMAIN:?LANDING_CANONICAL_WWW_DOMAIN is required}"
+  : "${LANDING_REDIRECT_DOMAIN:?LANDING_REDIRECT_DOMAIN is required}"
+  : "${LANDING_REDIRECT_WWW_DOMAIN:?LANDING_REDIRECT_WWW_DOMAIN is required}"
 
   validate_safe_token "LANDING_USER" "$LANDING_USER" '^[a-z_][a-z0-9_-]*$'
   validate_safe_token "LANDING_HOST" "$LANDING_HOST" '^[0-9a-zA-Z.:-]+$'
@@ -112,4 +114,3 @@ remote() {
   shift || true
   run_cmd ssh "${SSH_OPTIONS[@]}" "${LANDING_USER}@${LANDING_HOST}" -- "$cmd" "$@"
 }
-

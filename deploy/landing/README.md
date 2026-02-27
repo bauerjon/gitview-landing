@@ -1,6 +1,6 @@
 # GitView landing deploy (Hetzner)
 
-This repo is a Next.js app intended to serve the marketing site at `gitview.com`.
+This repo is a Next.js app intended to serve the marketing site at `gitview.ai`, with `gitview.com` redirecting to it.
 
 The deploy tooling mirrors the safety pattern used in the Teamster repo:
 
@@ -32,7 +32,7 @@ This sets up HTTP on port 80 (and makes the site reachable by IP).
 
 ## SSL (LetsEncrypt)
 
-After DNS is pointing `gitview.com` and `www.gitview.com` at the landing server, run:
+After DNS is pointing `gitview.ai`, `www.gitview.ai`, `gitview.com`, and `www.gitview.com` at the landing server, run:
 
 ```bash
 ./deploy/landing/ssl.sh --server hetzner-landing-1 --apply
@@ -46,4 +46,3 @@ After DNS is pointing `gitview.com` and `www.gitview.com` at the landing server,
 
 ./deploy/landing/control.sh --server hetzner-landing-1 restart --apply
 ```
-

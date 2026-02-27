@@ -130,12 +130,18 @@ UNIT
   systemctl enable '$LANDING_SYSTEMD_UNIT' >/dev/null
 
   # nginx vhost (http only for now; ssl.sh will add certs later)
+  mkdir -p /var/www/certbot
+
   cat > /etc/nginx/sites-available/gitview-landing.conf <<'NGINX'
 server {
   listen 80 default_server;
   listen [::]:80 default_server;
 
-  server_name ${LANDING_DOMAIN} ${LANDING_WWW_DOMAIN} _;
+  server_name ${LANDING_CANONICAL_DOMAIN} _;
+
+  location ^~ /.well-known/acme-challenge/ {
+    root /var/www/certbot;
+  }
 
   location / {
     proxy_pass http://127.0.0.1:${LANDING_PORT};
@@ -146,6 +152,36 @@ server {
     proxy_set_header X-Forwarded-Proto \$scheme;
     proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection \"upgrade\";
+  }
+}
+
+server {
+  listen 80;
+  listen [::]:80;
+
+  server_name ${LANDING_CANONICAL_WWW_DOMAIN};
+
+  location ^~ /.well-known/acme-challenge/ {
+    root /var/www/certbot;
+  }
+
+  location / {
+    return 301 http://${LANDING_CANONICAL_DOMAIN}\$request_uri;
+  }
+}
+
+server {
+  listen 80;
+  listen [::]:80;
+
+  server_name ${LANDING_REDIRECT_DOMAIN} ${LANDING_REDIRECT_WWW_DOMAIN};
+
+  location ^~ /.well-known/acme-challenge/ {
+    root /var/www/certbot;
+  }
+
+  location / {
+    return 301 http://${LANDING_CANONICAL_DOMAIN}\$request_uri;
   }
 }
 NGINX
