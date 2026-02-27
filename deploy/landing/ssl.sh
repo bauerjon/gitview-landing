@@ -16,7 +16,9 @@ What it does:
       - $LANDING_CANONICAL_WWW_DOMAIN
       - $LANDING_REDIRECT_DOMAIN
       - $LANDING_REDIRECT_WWW_DOMAIN
-  - Enables HTTPS and redirects all traffic to $LANDING_CANONICAL_DOMAIN
+  - Enables HTTPS
+  - Redirects any non-canonical host to https://$LANDING_CANONICAL_DOMAIN
+  - Does NOT force http->https on the canonical host (http://$LANDING_CANONICAL_DOMAIN stays on http)
 
 Prereq:
   DNS must point all four domains to this server IP.
@@ -87,6 +89,14 @@ remote bash -lc "set -euo pipefail
     --non-interactive \\
     --keep-until-expiring
 
+  mkdir -p /etc/letsencrypt/renewal-hooks/deploy
+  cat > /etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh <<'HOOK'
+#!/usr/bin/env bash
+set -euo pipefail
+systemctl reload nginx
+HOOK
+  chmod +x /etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh
+
   cat > /etc/nginx/sites-available/gitview-landing.conf <<'NGINX'
 server {
   listen 80 default_server;
@@ -99,7 +109,14 @@ server {
   }
 
   location / {
-    return 308 https://${LANDING_CANONICAL_DOMAIN}\$request_uri;
+    proxy_pass http://127.0.0.1:${LANDING_PORT};
+    proxy_http_version 1.1;
+    proxy_set_header Host \$host;
+    proxy_set_header X-Real-IP \$remote_addr;
+    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto \$scheme;
+    proxy_set_header Upgrade \$http_upgrade;
+    proxy_set_header Connection \"upgrade\";
   }
 }
 
@@ -136,6 +153,10 @@ server {
 
   resolver 1.1.1.1 8.8.8.8 valid=300s;
   resolver_timeout 5s;
+
+  location ^~ /.well-known/acme-challenge/ {
+    root /var/www/certbot;
+  }
 
   location / {
     proxy_pass http://127.0.0.1:${LANDING_PORT};
