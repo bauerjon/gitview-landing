@@ -166,7 +166,7 @@ server {
   }
 
   location / {
-    return 301 http://${LANDING_CANONICAL_DOMAIN}\$request_uri;
+    return 308 http://${LANDING_CANONICAL_DOMAIN}\$request_uri;
   }
 }
 
@@ -181,7 +181,7 @@ server {
   }
 
   location / {
-    return 301 http://${LANDING_CANONICAL_DOMAIN}\$request_uri;
+    return 308 http://${LANDING_CANONICAL_DOMAIN}\$request_uri;
   }
 }
 NGINX

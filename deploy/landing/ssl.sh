@@ -99,7 +99,7 @@ server {
   }
 
   location / {
-    return 301 https://${LANDING_CANONICAL_DOMAIN}\$request_uri;
+    return 308 https://${LANDING_CANONICAL_DOMAIN}\$request_uri;
   }
 }
 
@@ -114,7 +114,7 @@ server {
   }
 
   location / {
-    return 301 https://${LANDING_CANONICAL_DOMAIN}\$request_uri;
+    return 308 https://${LANDING_CANONICAL_DOMAIN}\$request_uri;
   }
 }
 
@@ -165,7 +165,7 @@ server {
   ssl_protocols TLSv1.2 TLSv1.3;
   ssl_prefer_server_ciphers off;
 
-  return 301 https://${LANDING_CANONICAL_DOMAIN}\$request_uri;
+  return 308 https://${LANDING_CANONICAL_DOMAIN}\$request_uri;
 }
 NGINX
 
