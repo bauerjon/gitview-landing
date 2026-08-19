@@ -32,13 +32,17 @@ This sets up HTTP on port 80 (and makes the site reachable by IP).
 
 ## GitHub Actions (gitview.ai)
 
-`.github/workflows/deploy-landing.yml` runs that same `deploy.sh` path on push to `main`/`master` and on `workflow_dispatch`. It targets **Hetzner landing only** (`hetzner-landing-1` / `178.156.133.39`). It does not deploy teamster.
+`.github/workflows/deploy-landing.yml` wraps that same `deploy.sh` path. It targets **Hetzner landing only** (`hetzner-landing-1` / `178.156.133.39`). It does not deploy teamster.
+
+- Push to `main`/`master` is a **no-op** until repo variable `LANDING_AUTO_DEPLOY` is `true`.
+- `workflow_dispatch` on `main`/`master` is the explicit first-deploy path after secrets are set.
+- `workflow_dispatch` on any other ref is refused (does not SSH).
 
 Required GitHub Environment secret (`landing`):
 
 - `LANDING_SSH_PRIVATE_KEY` — private key that can SSH as `root` to `178.156.133.39` (same key local deploys use via `LANDING_SSH_KEY` in `servers/hetzner-landing-1.env`; never commit the key)
 
-Flip it on: add `LANDING_SSH_PRIVATE_KEY` to the `landing` environment, require a reviewer on that environment, merge to `main`. The next push (or Actions → Deploy landing → Run workflow) deploys after that approval.
+Flip it on: after `LANDING_SSH_PRIVATE_KEY` exists, either run Actions → Deploy landing → Run workflow on `main`, or set repo variable `LANDING_AUTO_DEPLOY=true`. Merging this workflow does not live-deploy.
 
 ## SSL (LetsEncrypt)
 

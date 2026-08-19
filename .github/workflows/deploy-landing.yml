@@ -1,8 +1,12 @@
 # Deploy gitview-landing to gitview.ai (Hetzner landing only).
 # Does not deploy teamster / app.gitview.com — that host is separate.
 #
-# First production run: set secrets on the `landing` GitHub Environment,
-# require a reviewer on that environment, then merge to main / dispatch.
+# Linear: GIT-23
+#
+# First live run is infra-owned:
+# - Push to main/master is a no-op until repo variable LANDING_AUTO_DEPLOY=true
+# - workflow_dispatch on main/master is the explicit first-deploy path after secrets
+# - workflow_dispatch on any other ref is refused (does not SSH)
 
 name: Deploy landing
 
@@ -21,9 +25,21 @@ permissions:
   contents: read
 
 jobs:
+  refuse-non-default:
+    name: Refuse non-main deploy
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refuse
+        run: |
+          echo "::error::Refusing to deploy ${GITHUB_REF}. Production deploys only from main/master (gitview.ai / hetzner-landing-1). This does not deploy teamster."
+          exit 1
+
   deploy:
     name: Deploy gitview.ai
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: >-
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') &&
+      (github.event_name == 'workflow_dispatch' || vars.LANDING_AUTO_DEPLOY == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     environment:
@@ -32,6 +48,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
 
       - name: Deploy to Hetzner landing
         env:
@@ -49,6 +68,9 @@ jobs:
           printf '%s\n' "${LANDING_SSH_PRIVATE_KEY}" | sed 's/\r$//' > "${KEY_FILE}"
           chmod 600 "${KEY_FILE}"
           export LANDING_SSH_KEY_FILE="${KEY_FILE}"
+
+          echo "Deploying ${GITHUB_SHA} to hetzner-landing-1 (gitview.ai)."
+          echo "Not deploying teamster."
 
           ./deploy/landing/deploy.sh \
             --server hetzner-landing-1 \
