@@ -1,0 +1,80 @@
+# Deploy gitview-landing to gitview.ai (Hetzner landing only).
+# Does not deploy teamster / app.gitview.com — that host is separate.
+#
+# Linear: GIT-23
+#
+# First live run is infra-owned:
+# - Push to main/master is a no-op until repo variable LANDING_AUTO_DEPLOY=true
+# - workflow_dispatch on main/master is the explicit first-deploy path after secrets
+# - workflow_dispatch on any other ref is refused (does not SSH)
+
+name: Deploy landing
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-landing-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  refuse-non-default:
+    name: Refuse non-main deploy
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refuse
+        run: |
+          echo "::error::Refusing to deploy ${GITHUB_REF}. Production deploys only from main/master (gitview.ai / hetzner-landing-1). This does not deploy teamster."
+          exit 1
+
+  deploy:
+    name: Deploy gitview.ai
+    if: >-
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') &&
+      (github.event_name == 'workflow_dispatch' || vars.LANDING_AUTO_DEPLOY == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: landing
+      url: https://gitview.ai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Deploy to Hetzner landing
+        env:
+          LANDING_SSH_PRIVATE_KEY: ${{ secrets.LANDING_SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${LANDING_SSH_PRIVATE_KEY}" ]]; then
+            echo "Missing GitHub secret LANDING_SSH_PRIVATE_KEY." >&2
+            echo "Add it on the landing environment (Settings → Environments → landing)." >&2
+            exit 1
+          fi
+
+          umask 077
+          KEY_FILE="${RUNNER_TEMP}/landing_deploy_key"
+          printf '%s\n' "${LANDING_SSH_PRIVATE_KEY}" | sed 's/\r$//' > "${KEY_FILE}"
+          chmod 600 "${KEY_FILE}"
+          export LANDING_SSH_KEY_FILE="${KEY_FILE}"
+
+          echo "Deploying ${GITHUB_SHA} to hetzner-landing-1 (gitview.ai)."
+          echo "Not deploying teamster."
+
+          ./deploy/landing/deploy.sh \
+            --server hetzner-landing-1 \
+            --apply \
+            --no-confirm \
+            --local \
+            --ref "${GITHUB_SHA}"
