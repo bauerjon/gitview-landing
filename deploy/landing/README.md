@@ -30,6 +30,16 @@ This sets up HTTP on port 80 (and makes the site reachable by IP).
 ./deploy/landing/deploy.sh --server hetzner-landing-1 --apply
 ```
 
+## GitHub Actions (gitview.ai)
+
+`.github/workflows/deploy-landing.yml` runs that same `deploy.sh` path on push to `main`/`master` and on `workflow_dispatch`. It targets **Hetzner landing only** (`hetzner-landing-1` / `178.156.133.39`). It does not deploy teamster.
+
+Required GitHub Environment secret (`landing`):
+
+- `LANDING_SSH_PRIVATE_KEY` — private key that can SSH as `root` to `178.156.133.39` (same key local deploys use via `LANDING_SSH_KEY` in `servers/hetzner-landing-1.env`; never commit the key)
+
+Flip it on: add `LANDING_SSH_PRIVATE_KEY` to the `landing` environment, require a reviewer on that environment, merge to `main`. The next push (or Actions → Deploy landing → Run workflow) deploys after that approval.
+
 ## SSL (LetsEncrypt)
 
 After DNS is pointing `gitview.ai`, `www.gitview.ai`, `gitview.com`, and `www.gitview.com` at the landing server, run:

@@ -85,6 +85,12 @@ load_server_config() {
   # shellcheck disable=SC1090
   source "$server_config"
 
+  # CI (GitHub Actions) writes a deploy key from secrets and points here.
+  # Do not put key material in git; this is a path only.
+  if [[ -n "${LANDING_SSH_KEY_FILE:-}" ]]; then
+    LANDING_SSH_KEY="$LANDING_SSH_KEY_FILE"
+  fi
+
   : "${LANDING_HOST:?LANDING_HOST is required}"
   : "${LANDING_USER:?LANDING_USER is required}"
   : "${LANDING_SSH_KEY:?LANDING_SSH_KEY is required}"
@@ -97,6 +103,10 @@ load_server_config() {
   validate_safe_token "LANDING_USER" "$LANDING_USER" '^[a-z_][a-z0-9_-]*$'
   validate_safe_token "LANDING_HOST" "$LANDING_HOST" '^[0-9a-zA-Z.:-]+$'
   validate_safe_token "LANDING_APP_DIR" "$LANDING_APP_DIR" '^/[0-9A-Za-z._/-]+$'
+
+  if [[ "${APPLY:-false}" == "true" && ! -r "$LANDING_SSH_KEY" ]]; then
+    die "SSH key not readable: $LANDING_SSH_KEY"
+  fi
 
   SSH_OPTIONS=(
     -i "$LANDING_SSH_KEY"
