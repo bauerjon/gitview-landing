@@ -56,7 +56,11 @@
       "path-to-regexp@8": "8.4.2",
       "picomatch@2": "2.3.2",
       "picomatch@4": "4.0.7",
-      "postcss": "8.5.28"
+      "postcss": "8.5.28",
+      "proxy-addr": "2.0.8",
+      "sharp": "0.35.5",
+      "source-map-js": "1.2.2",
+      "postcss-selector-parser": "7.1.6"
     }
   }
 }
